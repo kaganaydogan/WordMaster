@@ -51,7 +51,19 @@
 
     <p>🏆 Başarı Oranı: <b>%{{ success_rate }}</b></p>
 
-    {% if success_rate >= 80 %}
+    {% set total = correct_count + wrong_count %}
+
+    <p>📚 Toplam Soru: <b>{{ total }}</b></p>
+
+    {% if total >= 20 %}
+    <p>🏆 Uzman Seviye</p>
+    {% elif total >= 10 %}
+    <p>🚀 Gelişiyor</p>
+    {% else %}
+    <p>🌱 Yeni Başlayan</p>
+    {% endif %}
+
+     {% if success_rate >= 80 %}
     <p>🔥 Harika gidiyorsun!</p>
     {% elif success_rate >= 50 %}
     <p>👍 İyi gidiyorsun!</p>
@@ -59,9 +71,6 @@
     <p>📚 Biraz daha çalışmalısın!</p>
     {% endif %}
 
-    {% set total = correct_count + wrong_count %}
-
-    <p>📚 Toplam Soru: <b>{{ total }}</b></p>
 
     <br>
 
