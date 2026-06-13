@@ -37,14 +37,16 @@ def home():
         total_words=len(words)
     )
 
+
+# Kayıtlı Tüm Kelimeleri Listele
 @app.route("/words")
 def show_words():
     return render_template(
         "words.html",
         words=words
-    )
+        )
 
-
+# Seçilen kelimeyi sil
 @app.route("/delete/<english>")
 def delete_word(english):
 
@@ -61,7 +63,7 @@ def delete_word(english):
         words=words
     )
 
-
+# Kelime quiz sistemi
 @app.route("/quiz", methods=["GET", "POST"])
 def quiz():
 
@@ -74,7 +76,7 @@ def quiz():
     random_word = quiz_system.get_random_word()
 
     total_questions = correct_count + wrong_count
-
+    # Başarı oranını hesapla
     if total_questions > 0:
         success_rate = int((correct_count / total_questions) * 100)
     else:
@@ -82,6 +84,7 @@ def quiz():
 
     if request.method == "POST":
 
+        # Kullanıcının cevabını al
         answer = request.form.get("answer")
         correct_answer = request.form.get("correct_answer")
         
@@ -127,6 +130,7 @@ def reset_stats():
 
     return redirect("/quiz")
 
+# Yeni kelime ekleme işlemi
 @app.route("/add", methods=["GET", "POST"])
 def add_word():
 
