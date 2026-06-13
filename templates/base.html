@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>WordMaster | İngilizce Kelime Öğrenme Sistemi</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <nav class="navbar">
+
+        <h2>📚 WordMaster</h2>
+
+        <div class="nav-links">
+
+            <a href="/">Ana Sayfa</a>
+
+            <a href="/add">Kelime Ekle</a>
+
+            <a href="/words">Kelime Listesi</a>
+
+            <a href="/quiz">Quiz</a>
+
+        </div>
+
+    </nav>
+
+    {% block content %}
+    {% endblock %}
+
+    <footer class="footer">
+    © 2026 WordMaster • Kağan Aydoğan
+</footer>
+
+</body>
+
+</html>

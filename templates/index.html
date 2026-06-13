@@ -1,0 +1,88 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="card">
+
+    <div class="badge">
+    🚀 Vocabulary Training System
+</div>
+
+    <h1>📚 WordMaster</h1>
+
+    <h2>İngilizce Kelime Öğrenme Platformu</h2>
+
+    <p>
+        Kelime ekleyin, quiz çözün ve gelişiminizi takip edin.
+    </p>
+
+    <br>
+
+    <a href="/add">
+        <button>➕ Kelime Ekle</button>
+    </a>
+
+    <br><br>
+
+    <a href="/words">
+        <button>📖 Kelime Listesi</button>
+    </a>
+
+    <br><br>
+
+    <a href="/quiz">
+        <button>🎯 Quiz Çöz</button>
+    </a>
+
+</div>
+
+<div class="card">
+
+    <h3>📊 Sistem Durumu</h3>
+
+    <div class="card">
+
+    <h3>🕒 Son Eklenen Kelimeler</h3>
+
+    <div class="feature-item">Computer → Bilgisayar</div>
+
+    <div class="feature-item">Network → Ağ</div>
+
+    <div class="feature-item">Keyboard → Klavye</div>
+
+</div>
+
+    <div class="hero-number">
+        {{ total_words }}
+    </div>
+
+    <p>Toplam Kayıtlı Kelime</p>
+
+</div>
+
+<div class="card">
+
+    <h3>🚀 Özellikler</h3>
+
+    <div class="feature-item">✅ Kelime Ekleme</div>
+    <div class="feature-item">✅ Kelime Listeleme</div>
+    <div class="feature-item">✅ Kelime Silme</div>
+    <div class="feature-item">✅ Quiz Sistemi</div>
+    <div class="feature-item">✅ Doğru / Yanlış İstatistikleri</div>
+    <div class="feature-item">✅ Kalıcı Veri Saklama</div>
+
+</div>
+
+<div class="card">
+
+    <h3>👨‍💻 Proje Bilgileri</h3>
+
+    <p><b>Geliştirici:</b> Kağan Aydoğan</p>
+
+    <p><b>Teknolojiler:</b> Python, Flask, HTML, CSS</p>
+
+    <p><b>Proje Türü:</b> İngilizce Kelime Öğrenme Uygulaması</p>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,94 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="card">
+
+    <h1>📖 Kelime Listesi</h1>
+
+    <p>Sisteme eklenen tüm İngilizce kelimeler</p>
+
+    <input
+        type="text"
+        id="searchInput"
+        placeholder="🔍 Kelime ara"
+        onkeyup="searchWord()">
+
+</div>
+
+<ul id="wordList">
+
+    {% if words %}
+
+        {% for word in words %}
+
+        <li>
+
+            <h2>🇬🇧 {{ word.english }}</h2>
+
+            <h3>🇹🇷 {{ word.turkish }}</h3>
+
+            <a href="/delete/{{ word.english }}">
+                <button>❌ Kelimeyi Sil</button>
+            </a>
+
+        </li>
+
+        {% endfor %}
+
+    {% else %}
+
+        <div class="empty-box">
+            📭 Henüz sisteme kayıtlı kelime bulunmuyor.
+            <br><br>
+            İlk kelimeyi eklemek için "Kelime Ekle" sayfasını kullanın.
+        </div>
+
+    {% endif %}
+
+</ul>
+
+<div class="card">
+
+    <a href="/">
+        <button>🏠 Ana Sayfaya Dön</button>
+    </a>
+
+</div>
+
+<script>
+
+    function searchWord() {
+
+        let input =
+            document.getElementById("searchInput");
+
+        let filter =
+            input.value.toUpperCase();
+
+        let ul =
+            document.getElementById("wordList");
+
+        let li =
+            ul.getElementsByTagName("li");
+
+        for (let i = 0; i < li.length; i++) {
+
+            let txtValue =
+                li[i].textContent ||
+                li[i].innerText;
+
+            if (
+                txtValue.toUpperCase().indexOf(filter) > -1
+            ) {
+                li[i].style.display = "";
+            }
+            else {
+                li[i].style.display = "none";
+            }
+        }
+    }
+
+</script>
+
+{% endblock %}

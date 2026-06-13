@@ -1,0 +1,85 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="card">
+
+    <h1>➕ Yeni Kelime Ekle</h1>
+
+    <h3>Kelime havuzuna yeni bir İngilizce kelime ekleyin</h3>
+
+    {% if success %}
+        <div class="success-box">
+            ✅ Kelime başarıyla eklendi!
+        </div>
+    {% endif %}
+
+    {% if error %}
+        <div class="error-box">
+            ❌ {{ error }}
+        </div>
+    {% endif %}
+
+    <form method="POST">
+
+        <p><b>🇬🇧 İngilizce Kelime</b></p>
+
+        <input
+            type="text"
+            name="english"
+            placeholder="Örnek: Computer"
+            required>
+
+        <br><br>
+
+        <p><b>🇹🇷 Türkçe Anlamı</b></p>
+
+        <input
+            type="text"
+            name="turkish"
+            placeholder="Örnek: Bilgisayar"
+            required>
+
+        <br><br>
+
+        <button type="submit">
+            💾 Kelimeyi Kaydet
+        </button>
+
+    </form>
+
+</div>
+
+<div class="card">
+
+    <h3>📚 Kelime Ekleme Rehberi</h3>
+
+    <div class="feature-item">
+        ✅ İngilizce kelimeyi doğru yazın
+    </div>
+
+    <div class="feature-item">
+        ✅ Türkçe anlamını doğru girin
+    </div>
+
+    <div class="feature-item">
+        ✅ Kelimeler quiz sisteminde kullanılacaktır
+    </div>
+
+    <div class="feature-item">
+        ✅ Kelimeler otomatik olarak kaydedilir
+    </div>
+
+</div>
+
+<div class="card">
+
+    <a href="/">
+        <button>
+            🏠 Ana Sayfaya Dön
+        </button>
+    </a>
+
+</div>
+
+{% endblock %}

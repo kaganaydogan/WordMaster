@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="card">
+
+    <h1>🎯 Kelime Quiz</h1>
+
+    <h3>Aşağıdaki İngilizce kelimenin Türkçe anlamını yazınız</h3>
+
+    <h2>🇬🇧 {{ word.english }}</h2>
+
+    <form method="POST">
+
+    <input
+        type="hidden"
+        name="correct_answer"
+        value="{{ word.turkish }}">
+
+    <input
+        type="text"
+        name="answer"
+        placeholder="Türkçe anlamını yaz"
+        required>
+
+    <br><br>
+
+    <button type="submit">
+        ✅ Cevabı Kontrol Et
+    </button>
+
+</form>
+
+    {% if result %}
+
+        <div class="success-box" style="margin-top:20px;">
+            {{ result }}
+        </div>
+
+    {% endif %}
+
+</div>
+
+<div class="card">
+
+    <h3>📊 Quiz İstatistikleri</h3>
+
+    <p>✅ Doğru Sayısı: <b>{{ correct_count }}</b></p>
+
+    <p>❌ Yanlış Sayısı: <b>{{ wrong_count }}</b></p>
+
+    <p>🏆 Başarı Oranı: <b>%{{ success_rate }}</b></p>
+
+    {% set total = correct_count + wrong_count %}
+
+    <p>📚 Toplam Soru: <b>{{ total }}</b></p>
+
+    <br>
+
+<a href="/reset_stats">
+    <button>
+        🔄 İstatistikleri Sıfırla
+    </button>
+</a>
+
+</div>
+
+<div class="card">
+
+    <a href="/">
+        <button>🏠 Ana Sayfaya Dön</button>
+    </a>
+
+</div>
+
+{% endblock %}
