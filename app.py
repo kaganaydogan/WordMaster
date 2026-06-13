@@ -75,50 +75,34 @@ def quiz():
     quiz_system = Quiz(words)
     random_word = quiz_system.get_random_word()
 
+    if request.method == "POST":
+
+        answer = request.form.get("answer")
+        correct_answer = request.form.get("correct_answer")
+
+        if answer and answer.lower().strip() == correct_answer.lower().strip():
+            correct_count += 1
+        else:
+            wrong_count += 1
+
+        return redirect("/quiz")
+
     total_questions = correct_count + wrong_count
-    # Başarı oranını hesapla
+
     if total_questions > 0:
         success_rate = int((correct_count / total_questions) * 100)
     else:
         success_rate = 0
 
-    if request.method == "POST":
-
-        # Kullanıcının cevabını al
-        answer = request.form.get("answer")
-        correct_answer = request.form.get("correct_answer")
-        
-        if answer and answer.lower().strip() == correct_answer.lower().strip():
-            correct_count += 1
-            result = "✅ Doğru!"
-        else:
-            wrong_count += 1
-            result = f"❌ Yanlış! Doğru cevap: {correct_answer}"
-
-        total_questions = correct_count + wrong_count
-
-        if total_questions > 0:
-            success_rate = int((correct_count / total_questions) * 100)
-        else:
-            success_rate = 0
-
-        return render_template(
-            "quiz.html",
-            word=random_word,
-            result=result,
-            correct_count=correct_count,
-            wrong_count=wrong_count,
-            success_rate=success_rate
-        )
-
     return render_template(
         "quiz.html",
         word=random_word,
-        result="",
         correct_count=correct_count,
         wrong_count=wrong_count,
         success_rate=success_rate
     )
+
+
 
 @app.route("/reset_stats")
 def reset_stats():
