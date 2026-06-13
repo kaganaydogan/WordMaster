@@ -51,6 +51,14 @@
 
     <p>🏆 Başarı Oranı: <b>%{{ success_rate }}</b></p>
 
+    {% if success_rate >= 80 %}
+    <p>🔥 Harika gidiyorsun!</p>
+    {% elif success_rate >= 50 %}
+    <p>👍 İyi gidiyorsun!</p>
+    {% else %}
+    <p>📚 Biraz daha çalışmalısın!</p>
+    {% endif %}
+
     {% set total = correct_count + wrong_count %}
 
     <p>📚 Toplam Soru: <b>{{ total }}</b></p>
