@@ -1,9 +1,10 @@
-from flask import Flask, render_template, request, redirect
+from flask import Flask, render_template, request, redirect, flash
 import random
 from models.word import Word
 from models.quiz import Quiz
 
 app = Flask(__name__)
+app.secret_key = "wordmaster_secret_key"
 
 words = []
 
@@ -82,8 +83,10 @@ def quiz():
 
         if answer and answer.lower().strip() == correct_answer.lower().strip():
             correct_count += 1
+            flash("✅ Doğru cevap!")
         else:
             wrong_count += 1
+            flash(f"❌ Yanlış! Doğru cevap: {correct_answer}")
 
         return redirect("/quiz")
 
